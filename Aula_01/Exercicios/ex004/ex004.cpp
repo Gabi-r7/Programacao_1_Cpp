@@ -42,8 +42,7 @@ int main() {
     Aluno aluno;
     std::string nome;
     int matricula;
-    float n1, n2, n3;
-    float media;
+    float n1, n2, n3, media;
     bool aprovado;
     std::cout << "Digite o nome do aluno: ";
     std::cin >> nome;
@@ -58,14 +57,14 @@ int main() {
     aluno.setVar(nome, matricula, n1, n2, n3);
     media = aluno.calcMedia();
     aprovado = aluno.Situacao();
-    std::cout << "Nome: " << nome;
-    std::cout << "Matrícula: " << matricula;
-    std::cout << "Média: " << media:
+    std::cout << "\n\nNome: " << nome;
+    std::cout << "\nMatrícula: " << matricula;
+    std::cout << "\nMédia: " << media;
     if (aprovado) {
-        std::cout << "Aprovado!";
+        std::cout << "\nAprovado!";
     }
     else {
-        std::cout << "Reprovado!";
+        std::cout << "\nReprovado!";
     }
     return 0;
 }
