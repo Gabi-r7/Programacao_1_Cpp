@@ -59,7 +59,7 @@ int main() {
             saldo = conta.deposito(valor);
             break;
         case 2:
-        std::cout << "\nDigite o valor do saque: ";
+            std::cout << "\nDigite o valor do saque: ";
             std::cin >> valor;
             saldo = conta.saque(valor);
             break;
