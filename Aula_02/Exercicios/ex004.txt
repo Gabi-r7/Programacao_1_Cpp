@@ -1,0 +1,3 @@
+É uma composição pois o motor é uma parte do carro e depende dele, sem o carro não tem motor.
+A cardinalidade seria que o carro precisa ter pelo menos 1 motor e no máximo n e cada motor tem somente um 
+carro, ou seja, 1 pra 1
