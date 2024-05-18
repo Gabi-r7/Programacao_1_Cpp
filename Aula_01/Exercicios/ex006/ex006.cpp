@@ -30,8 +30,8 @@ class Funcionarios {
             return salario;
         };
 
-        void ganhoAnual(float salario) {
-            std::cout << "O ganho Anual é de: " << salario * 12;
+        void ganhoAnual() {
+            std::cout << "O ganho Anual é de: " << getSalario() * 12;
         };
 
         void exibeDados(std::string nome) {
@@ -69,12 +69,8 @@ class Administrativo : public Assistente {
         Administrativo(){};
         ~Administrativo(){};
 
-        void adicionalNoturno(float adicional) {
-            setSalario(getSalario() + adicional); 
-        }
-        
-        void ganhoAnual(float salario) {
-            std::cout << "\nGanho anual assistente administrativo: " << salario * 12;
+        void ganhoAnual() {
+            std::cout << "\nGanho anual assistente administrativo: " << getSalario() * 12;
         }
 };
 
@@ -83,12 +79,8 @@ class Tecnico : public Assistente {
         Tecnico(){};
         ~Tecnico(){};
 
-        void addBonus(float bonus){
-            setSalario(getSalario() + bonus);
-        }
-
-        void ganhoAnual(float salario) {
-            std::cout << "\nGanho anual assistente técnico: " << salario * 12;
+        void ganhoAnual() {
+            std::cout << "\nGanho anual assistente técnico: " << getSalario() * 12;
         }
 };
 
@@ -108,6 +100,7 @@ int main() {
     std::cin >> salario;
     std::cout << "Digite sua matrícula: ";
     std::cin >> matricula;
+    funcionarios.setSalario(salario);
     do{
         std::cout << "\nDigite:\n - 1 para Assistente Técnico;\n - 2 para Assistente Administrativo;\n Sua opção: ";
         std::cin >> aux2;
@@ -126,18 +119,20 @@ int main() {
             {
                 std::cout << "Digite o valor do adicional noturno: ";
                 std::cin >> adicional;
-                administrativo.adicionalNoturno(adicional);
+                salario += adicional;
+                funcionarios.setSalario(salario);
             }
         } while (turno != 0 && turno != 1);
     }
     else { //Técnico
         std::cout << "Digite um valor para ser adicionado de bônus para o funcionário: ";
         std::cin >> bonus;
-        tecnico.addBonus(bonus);
+        salario += bonus;
+        funcionarios.setSalario(salario);
     }
     
     assistente.setMatricula(matricula);
-    funcionarios.setSalario(salario);
+    salario = funcionarios.getSalario();
 
     do
     {
@@ -153,7 +148,7 @@ int main() {
             funcionarios.setSalario(salario);
             break;
         case 2:
-            funcionarios.ganhoAnual(salario);
+            funcionarios.ganhoAnual();
             break;
         case 3:
             funcionarios.exibeDados(nome);
