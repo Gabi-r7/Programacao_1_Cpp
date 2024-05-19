@@ -15,18 +15,55 @@ std::vector<Livro*> livros;
 
 void acoes(){
     User user;
+    Livro livro;
+    Admin admin;
     int aux;
+    int id = user.getIdUser();
+    bool adm = user.getAdm();
+    
     while (true){
         std::cout << "O que deseja fazer?" << std::endl;
+        std::cout << "Digite 0 para sair"  << std::endl;
         std::cout << "Digite 1 para emprestar um livro"  << std::endl;
         std::cout << "Digite 2 para devolver um livro"  << std::endl;
-        std::cout << "Digite 3 para sair"  << std::endl;
+        std::cout << "Digite 3 para ver os livros disponíveis"  << std::endl;
+        if (adm){
+            std::cout << "Digite 4 para cadastrar um livro"  << std::endl;
+            std::cout << "Digite 5 para apagar um livro"  << std::endl;
+            std::cout << "Digite 6 para modificar o status de um usuário"  << std::endl;
+            std::cout << "Digite 7 para cadastrar um usuário"  << std::endl;
+            std::cout << "Digite 8 para apagar um usuário"  << std::endl;
+            std::cout << "Digite 9 para aplicar uma multa"  << std::endl;
+        }
         std::cin >> aux;
         if (aux == 1){
-            //emprestar
+            user.EmprestarLivro();
         }
         else if (aux == 2){
-            //devolver
+            user.DevolverLivro();
+        }
+        else if (aux == 3){
+            livro.MostrarDisponiveis();
+        }
+        if (adm) {
+            if (aux == 4){
+                admin.CadastrarLivro();
+            }
+            else if (aux == 5){
+                admin.ApagarLivro();
+            }
+            else if (aux == 6){
+                admin.ModificarStatusUser();
+            }
+            else if (aux == 7){
+                admin.CadastrarUser();
+            }
+            else if (aux == 8){
+                admin.ApagarUser();
+            }
+            else if (aux == 9){
+                admin.AplicarMulta();
+            }
         }
         else {
             std::cout << "Até mais!";
@@ -54,6 +91,7 @@ void logar(){
 };
 
 void cadastrar(){
+    User user;
     std::string login, password, email, phone;
     bool adm, existe;
     int admAux;
@@ -71,9 +109,11 @@ void cadastrar(){
         std::cin >> admAux;
         if (admAux == adminSenha){
             adm = true;
+            user.setAdm(adm);
         }
         else {
             adm = false;
+            user.setAdm(adm);
         }
         for (User* user: users){
             if (login == user->getLogin()){

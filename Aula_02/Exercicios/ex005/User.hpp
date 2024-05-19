@@ -19,6 +19,14 @@ class User {
             return idUser;
         };
 
+        void setAdm(bool _adm){
+            adm = _adm;
+        };
+
+        bool getAdm(){
+            return adm;
+        };
+
         void setIdUser(int _idUser){
             idUser = _idUser;
         };
