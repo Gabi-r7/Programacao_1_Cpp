@@ -10,6 +10,7 @@
 #include "User.hpp"
 #include "Livro.hpp"
 #include "Emprestimo.hpp"
+#include "Admin.hpp"
 #define adminSenha 1230
 
 
@@ -21,7 +22,7 @@ void acoes(){
     Admin admin;
     int aux, idLivro;
     int id = user.getIdUser();
-    bool adm = user.getAdm(), funcionou;
+    bool adm = user.getAdm(), funcionou, status;
     
     while (true){
         std::cout << "O que deseja fazer?" << std::endl;
@@ -61,21 +62,31 @@ void acoes(){
         if (adm) {
             if (aux == 4){
                 admin.CadastrarLivro();
+                std::cout << "Livro cadastrado com sucesso!" << std::endl;
             }
             else if (aux == 5){
                 admin.ApagarLivro();
+                std::cout << "Livro apagado com sucesso!" << std::endl;
             }
             else if (aux == 6){
-                admin.ModificarStatusUser();
+                status = admin.ModificarStatusUser(id);
+                if (status) {
+					std::cout << "O usuário agora é um devedor!" << std::endl;
+				}
+                else {
+					std::cout << "O usuário não é mais um devedor!" << std::endl;
+				}
             }
             else if (aux == 7){
-                admin.CadastrarUser();
+                admin.CadastrarLivro();
             }
             else if (aux == 8){
                 admin.ApagarUser();
+                std::cout << "Usuário apagado com sucesso!" << std::endl;
             }
             else if (aux == 9){
                 admin.AplicarMulta();
+                std::cout << "Multa aplicada com sucesso!" << std::endl;
             }
         }
         else {
@@ -145,33 +156,6 @@ void cadastrar(){
     std::cout << "Cadastro realizado com sucesso!" << std::endl;
     newUser->setIdUser(users.size() - 1);
     logar();
-};
-
-
-class Admin : public User{
-    public:
-        Admin(){};
-        ~Admin(){};
-
-        // bool cadastrarUser(){
-                
-        // };
-
-        // bool apagarUser(){
-                
-        // };
-
-        // bool modificarStatusUser(){
-                
-        // };
-
-        // bool cadastrarLivro(){
-                
-        // };
-
-        // bool aplicarMulta(){
-                
-        // };
 };
 
 

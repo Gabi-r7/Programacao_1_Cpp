@@ -9,8 +9,26 @@ class User {
         ~User(){};
         std::string login;
         int idUser;
-        User* users;
         
+        void setEmail(std::string _email) {
+			email = _email;
+		};
+
+        std::string getEmail() {
+			return email;
+		};
+
+        void setStatus(bool _devedor) {
+			devedor = _devedor;
+		};
+
+        
+
+
+
+        bool getStatus() {
+            return devedor;
+        };
 
         std::string getLogin(){
             return login;
@@ -51,7 +69,7 @@ class User {
 
     protected:
         std::string password, email, phone, senha;
-        bool adm;
+        bool adm, devedor;
         float valorMulta;
 };
 #endif

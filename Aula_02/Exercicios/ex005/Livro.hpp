@@ -57,24 +57,6 @@ class Livro {
             return editora;
         };
 
-        void CadastrarLivro(){
-            Livro livro;
-            std::string titulo, autor, editora;
-            int idLivro;
-            std::cout << "Digite o título do livro: ";
-            std::cin >> titulo;
-            livro.setTitulo(titulo);
-            std::cout << "Digite o autor do livro: ";
-            std::cin >> autor;
-            livro.setAutor(autor);
-            std::cout << "Digite a editora do livro: ";
-            std::cin >> editora;
-            livro.setEditora(editora);
-            idLivro = livros.size();
-            livro.setIdLivro(idLivro);
-            livros.push_back(livro);
-        };
-
         void MostrarDisponiveis(){
             for (int i = 0; i < livros.size(); i++){
                 if (!livros[i].getEmprestado()){
