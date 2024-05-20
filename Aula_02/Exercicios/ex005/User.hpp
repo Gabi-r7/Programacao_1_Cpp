@@ -1,4 +1,7 @@
 #include <iostream>
+#include <vector>
+#ifndef USER_HPP
+#define USER_HPP
 
 class User {
     public:
@@ -6,6 +9,8 @@ class User {
         ~User(){};
         std::string login;
         int idUser;
+        User* users;
+        
 
         std::string getLogin(){
             return login;
@@ -27,6 +32,14 @@ class User {
             return adm;
         };
 
+        void setMulta(float _valorMulta){
+            valorMulta = _valorMulta;
+        };
+
+        float getMulta(){
+            return valorMulta;
+        };
+
         void setIdUser(int _idUser){
             idUser = _idUser;
         };
@@ -36,16 +49,9 @@ class User {
             password = _senha;
         };
 
-        // bool EmprestarLivro(int idLivro){
-
-        // };
-
-        // bool DevolverLivro(int idLivro){
-
-        // };
-
     protected:
         std::string password, email, phone, senha;
         bool adm;
         float valorMulta;
 };
+#endif

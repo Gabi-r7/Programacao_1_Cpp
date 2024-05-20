@@ -8,18 +8,20 @@
 #include <iostream>
 #include <vector>
 #include "User.hpp"
+#include "Livro.hpp"
+#include "Emprestimo.hpp"
 #define adminSenha 1230
-std::vector<User*> users;
-std::vector<Livro*> livros;
+
 
 
 void acoes(){
     User user;
     Livro livro;
+    Emprestimo emprestimo;
     Admin admin;
-    int aux;
+    int aux, idLivro;
     int id = user.getIdUser();
-    bool adm = user.getAdm();
+    bool adm = user.getAdm(), funcionou;
     
     while (true){
         std::cout << "O que deseja fazer?" << std::endl;
@@ -37,10 +39,21 @@ void acoes(){
         }
         std::cin >> aux;
         if (aux == 1){
-            user.EmprestarLivro();
+            std::cout << "Digite o id do livro que deseja emprestar: ";
+            std::cin >> idLivro;
+            funcionou = emprestimo.EmprestarLivro(idLivro, id);
+            if (funcionou){
+                std::cout << "Livro emprestado com sucesso!" << std::endl;
+            }
+            else {
+                std::cout << "Não foi possível emprestar o livro!" << std::endl;
+            }
         }
         else if (aux == 2){
-            user.DevolverLivro();
+            std::cout << "Digite o id do livro que deseja devolver: ";
+            std::cin >> idLivro;
+            emprestimo.DevolverLivro(idLivro);
+            std::cout << "Livro devolvido com sucesso!" << std::endl;
         }
         else if (aux == 3){
             livro.MostrarDisponiveis();
@@ -122,10 +135,7 @@ void cadastrar(){
                 break;
             }
         }
-        if (existe){
-            continue;
-        }
-        else {
+        if (!existe) {
             break;
         }
     }
@@ -164,17 +174,6 @@ class Admin : public User{
         // };
 };
 
-class Livro {
-    public:
-        Livro(){};
-        ~Livro(){};
-
-        
-    private:
-        std::string titulo, autor, editora;
-        int idLivro;
-        bool disponivel;
-};
 
 void inicializaSistema(){
     User user;
