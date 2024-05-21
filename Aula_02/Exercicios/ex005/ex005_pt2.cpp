@@ -91,6 +91,7 @@ void acoes(){
         }
         else {
             std::cout << "Até mais!";
+            break;
         }
     }
 };
