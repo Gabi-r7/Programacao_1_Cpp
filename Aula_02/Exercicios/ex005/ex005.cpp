@@ -1,12 +1,13 @@
 // Desenvolva o diagrama de classes UML de um sistema de biblioteca e 
-// implemente esse sistema. Você deve ser capaz de cadastrar usuários, apagar 
-// usuários, modificar o status do usuário (e.g., verificar se o mesmo possui multas 
-// por atraso, se a multa for maior que um valor X, ele não poderá mais pegar livros 
+// implemente esse sistema. Voce deve ser capaz de cadastrar usuarios, apagar 
+// usuarios, modificar o status do usuario (e.g., verificar se o mesmo possui multas 
+// por atraso, se a multa for maior que um valor X, ele não podera mais pegar livros 
 // emprestados), cadastrar livros, emprestar livros, devolver livros, aplicar multas 
-// por atraso, e checar se um determinado livro está disponível para ser 
+// por atraso, e checar se um determinado livro esta disponível para ser 
 // emprestado. Utilize listas como se fossem seu banco de dados (std::vector)
 #include <iostream>
 #include <vector>
+#include <locale.h>
 #include "User.hpp"
 #include "Livro.hpp"
 #include "Emprestimo.hpp"
@@ -33,9 +34,9 @@ void acoes(){
         if (adm){
             std::cout << "Digite 4 para cadastrar um livro"  << std::endl;
             std::cout << "Digite 5 para apagar um livro"  << std::endl;
-            std::cout << "Digite 6 para modificar o status de um usuário"  << std::endl;
-            std::cout << "Digite 7 para cadastrar um usuário"  << std::endl;
-            std::cout << "Digite 8 para apagar um usuário"  << std::endl;
+            std::cout << "Digite 6 para modificar o status de um usuario"  << std::endl;
+            std::cout << "Digite 7 para cadastrar um usuario"  << std::endl;
+            std::cout << "Digite 8 para apagar um usuario"  << std::endl;
             std::cout << "Digite 9 para aplicar uma multa"  << std::endl;
         }
         std::cin >> aux;
@@ -71,10 +72,10 @@ void acoes(){
             else if (aux == 6){
                 status = admin.ModificarStatusUser(id);
                 if (status) {
-					std::cout << "O usuário agora é um devedor!" << std::endl;
+					std::cout << "O usuario agora e um devedor!" << std::endl;
 				}
                 else {
-					std::cout << "O usuário não é mais um devedor!" << std::endl;
+					std::cout << "O usuario não e mais um devedor!" << std::endl;
 				}
             }
             else if (aux == 7){
@@ -82,7 +83,7 @@ void acoes(){
             }
             else if (aux == 8){
                 admin.ApagarUser();
-                std::cout << "Usuário apagado com sucesso!" << std::endl;
+                std::cout << "Usuario apagado com sucesso!" << std::endl;
             }
             else if (aux == 9){
                 admin.AplicarMulta();
@@ -90,7 +91,7 @@ void acoes(){
             }
         }
         else {
-            std::cout << "Até mais!";
+            std::cout << "Ate mais!";
             break;
         }
     }
@@ -98,7 +99,7 @@ void acoes(){
 
 void logar(){
     std::string login, password;
-    std::cout << "Faça seu login!" << std::endl;
+    std::cout << "Faca seu login!" << std::endl;
     while (true){
         std::cout << "Digite seu login: ";
         std::cin >> login;
@@ -121,7 +122,7 @@ void cadastrar(){
     bool adm, existe;
     int admAux;
     while (true){
-        std::cout << "Faça seu cadastro!" << std::endl;
+        std::cout << "Faca seu cadastro!" << std::endl;
         std::cout << "Digite seu login: ";
         std::cin >> login;
         std::cout << "Digite sua senha: ";
@@ -130,7 +131,7 @@ void cadastrar(){
         std::cin >> email;
         std::cout << "Digite seu telefone: ";
         std::cin >> phone;
-        std::cout << "Digite a senha de administrador caso você seja: ";
+        std::cout << "Digite a senha de administrador caso voce seja: ";
         std::cin >> admAux;
         if (admAux == adminSenha){
             adm = true;
@@ -142,7 +143,7 @@ void cadastrar(){
         }
         for (User* user: users){
             if (login == user->getLogin()){
-                std::cout << "Login já existente!" << std::endl;
+                std::cout << "Login ja existente!" << std::endl;
                 existe = true;
                 break;
             }
@@ -166,20 +167,25 @@ void inicializaSistema(){
     int senha;
     std::cout << "Bem vindo ao sistema de biblioteca!" << std::endl;
     do{
-        std::cout << "Digite 1 para logar e 2 para criar uma conta";
+        std::cout << "Digite:\n- 0 pra sair;\n - 1 para logar;\n - 2 para criar uma conta; Digite sua opcao: ";
         std::cin >> aux;
     } while (aux != 1 && aux != 2);
 
-    if (aux == 1){
+    switch (aux){
+    case 1:
         logar();
-    }
-    else {
+        break;
+    case 2:
         cadastrar();
+        break;
+    default:
+        break;
     }
 };
 
 
 int main() {
+    setlocale(LC_ALL, "Portuguese");
     inicializaSistema();
 
 

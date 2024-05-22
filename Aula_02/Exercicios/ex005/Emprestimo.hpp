@@ -11,8 +11,8 @@ class Emprestimo{
         ~Emprestimo(){};
 
         bool EmprestarLivro(int idLivro, int idUser){
-            if (users[idUser]->getMulta() > 50.00){
-                std::cout << "Usuário com multa acima de R$50,00. Não é possível emprestar livros." << std::endl;
+            if (users[idUser]->getMulta() > 15.00){
+                std::cout << "Usuario com multa acima de R$50,00. Nao e possivel emprestar livros." << std::endl;
                 return false;
             }
             else{

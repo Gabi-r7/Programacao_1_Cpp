@@ -18,7 +18,7 @@ public:
         Livro livro;
         std::string titulo, autor, editora;
         int idLivro;
-        std::cout << "Digite o título do livro: ";
+        std::cout << "Digite o titulo do livro: ";
         std::cin >> titulo;
         livro.setTitulo(titulo);
         std::cout << "Digite o autor do livro: ";
@@ -62,7 +62,7 @@ public:
         bool adm, existe;
         int admAux;
         while (true) {
-            std::cout << "Faça seu cadastro!" << std::endl;
+            std::cout << "Faca seu cadastro!" << std::endl;
             std::cout << "Digite seu login: ";
             std::cin >> login;
             std::cout << "Digite sua senha: ";
@@ -71,7 +71,7 @@ public:
             std::cin >> email;
             std::cout << "Digite seu telefone: ";
             std::cin >> phone;
-            std::cout << "Digite a senha de administrador caso você seja: ";
+            std::cout << "Digite a senha de administrador caso voce seja: ";
             std::cin >> admAux;
             if (admAux == adminSenha) {
                 adm = true;
@@ -83,7 +83,7 @@ public:
             }
             for (User* user : users) {
                 if (login == user->getLogin()) {
-                    std::cout << "Login já existente!" << std::endl;
+                    std::cout << "Login ja existente!" << std::endl;
                     existe = true;
                     break;
                 }
@@ -101,7 +101,7 @@ public:
 
     void ApagarUser(){
         int idUser;
-        std::cout << "Digite o ID do usuário que deseja apagar: ";
+        std::cout << "Digite o ID do usuario que deseja apagar: ";
         std::cin >> idUser;
         for (int i = 0; i < users.size(); i++) {
             if (users[i]->getIdUser() == idUser) {
@@ -114,7 +114,7 @@ public:
 
     void AplicarMulta(){
         int idUser, valor;
-		std::cout << "Digite o ID do usuário que deseja aplicar a multa: ";
+		std::cout << "Digite o ID do usuario que deseja aplicar a multa: ";
 		std::cin >> idUser;
         std::cout << "Digite o valor da multa: ";
         std::cin >> valor;

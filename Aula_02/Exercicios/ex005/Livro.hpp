@@ -61,7 +61,7 @@ class Livro {
             for (int i = 0; i < livros.size(); i++){
                 if (!livros[i].getEmprestado()){
                     std::cout << "ID: " << livros[i].getIdLivro() << std::endl;
-                    std::cout << "Título: " << livros[i].getTitulo() << std::endl;
+                    std::cout << "Titulo: " << livros[i].getTitulo() << std::endl;
                     std::cout << "Autor: " << livros[i].getAutor() << std::endl;
                     std::cout << "Editora: " << livros[i].getEditora() << std::endl;
                     std::cout << "--------------------------------" << std::endl;
